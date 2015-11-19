@@ -76,9 +76,14 @@
                    <input type="text" id="search-bar" placeholder="Search snippets" /><a href="#submit"><i class="fa fa-search"></i></a>
                 </div>
                 <div id="user-bar-left">
+	                @if(Auth::check())
+                    <img class="avatar" src="{!! auth::user()->avatar() !!}">
+                    Welcome back, <a href="#">{{ Auth::user()->name }}</a>!
+                    @else
                     <img class="avatar" src=
                     "https://pbs.twimg.com/profile_images/601886235531939840/kIPyMEdW.png">
-                    Welcome back, <a href="#">Adam</a>!
+                    Welcome back, Guest. <a href="{!! action('Auth\AuthController@getLogin') !!}">Log in</a>!
+                    @endif
                 </div>
             </div>
             

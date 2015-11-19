@@ -36,4 +36,8 @@ class User extends Model implements AuthenticatableContract,
      * @var array
      */
     protected $hidden = ['password', 'remember_token'];
+    
+    public function avatar() {
+	    return $this->avatar_url ?: "http://www.gravatar.com/avatar/default?d=mm&f=y";
+    }
 }
