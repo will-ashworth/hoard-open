@@ -11,4 +11,10 @@
 |
 */
 
+Route::controllers([
+    'auth' => 'Auth\AuthController',
+    'password' => 'Auth\PasswordController',
+]);
+
 Route::get('/', array('as' => 'home', 'uses' =>'HomeController@index'));
+Route::get('/dashboard', array('as' => 'dashboard', 'uses' =>'HomeController@index'));

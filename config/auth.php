@@ -28,7 +28,7 @@ return [
     |
     */
 
-    'model' => GetHoard\User::class,
+    'model' => GetHoard\Models\User::class,
 
     /*
     |--------------------------------------------------------------------------
