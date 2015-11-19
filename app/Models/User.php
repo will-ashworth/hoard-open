@@ -40,4 +40,8 @@ class User extends Model implements AuthenticatableContract,
     public function avatar() {
 	    return $this->avatar_url ?: "http://www.gravatar.com/avatar/default?d=mm&f=y";
     }
+    
+    public function comments() {
+        return $this->hasMany('GetHoard\Models\Snippet');
+    }
 }

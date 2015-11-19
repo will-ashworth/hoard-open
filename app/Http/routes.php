@@ -14,6 +14,7 @@
 Route::controllers([
     'auth' => 'Auth\AuthController',
     'password' => 'Auth\PasswordController',
+    'snippet' => 'SnippetController',
 ]);
 
 Route::get('/', array('as' => 'home', 'uses' =>'HomeController@index'));
