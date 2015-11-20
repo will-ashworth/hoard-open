@@ -1,6 +1,5 @@
 $(document).ready(function() {
 	$('.snippet-preview').click(function(e) {
-		console.log(e.target);
 		if($(e.target).hasClass('tag') || $(e.target).hasClass('fa')) {
 			return;
 		}
@@ -16,9 +15,5 @@ $(document).ready(function() {
 	$('#search').click(function(e) {
         e.preventDefault();
 		$('#searchForm').submit();
-	});
-	
-	$('.tag.favourite').click(function(e) {
-		$(this).toggleClass('active');
 	});
 });

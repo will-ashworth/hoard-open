@@ -23,7 +23,7 @@
                         {{ $snippet->descShort() }}
                     </div>
                     <div class="snippet-tags">
-                        <span class="tag favourite"><i class="fa fa-heart"></i></span>
+                        <span class="tag favourite @if($snippet->isFavourited()) active @endif" id="{{ $snippet->id }}"><i class="fa fa-heart"></i></span>
                         <span class="tag" style="background: #3498db;">Sample
                         Tag</span>
                     </div>
@@ -37,7 +37,7 @@
 					<div class="small-12 large-12 columns">
 						<h1 class="snippet-title">{{ $snippet->name }}.{{ $snippet->extension }}
 							<div class="snippet-tags">
-								<span class="tag favourite"><i class="fa fa-heart"></i></span>
+								<span class="tag favourite @if($snippet->isFavourited()) active @endif" id="{{ $snippet->id }}"><i class="fa fa-heart"></i></span>
 								<span class="tag" style="background: #3498db;">Sample Tag</span>
                 			</div>
                 		</h1>
@@ -76,4 +76,20 @@
 			  </div>
 			@endforeach
         </div>
+@endsection
+
+@section('scripts')
+$(document).ready(function() {
+	$('.tag.favourite').click(function(e) {
+		
+		var id = $(this).attr('id');
+		$.each($('.tag.favourite'), function() {
+			if($(this).attr('id') === id)
+				$(this).toggleClass("active");
+		});
+		$.post("{!! action('FavouriteController@postFavourite') !!}", { 'snippet_id': id, '_token': '{!! csrf_token() !!}' }).done(function( ret ) {
+		
+		});
+	});
+});
 @endsection

@@ -6,6 +6,10 @@ use Illuminate\Database\Eloquent\Model;
 
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
+
+use GetHoard\Models\Favourite;
+use Auth;
+
 use Symfony\Component\HttpFoundation\File\UploadedFile;
 
 class Snippet extends Model
@@ -34,6 +38,10 @@ class Snippet extends Model
     
     public function author() {
         return $this->belongsTo('GetHoard\Models\User', 'user_id');
+    }
+    
+    public function favourites() {
+        return $this->hasMany('GetHoard\Models\Favourite');
     }
     
     public function generateCode() {
@@ -71,6 +79,14 @@ class Snippet extends Model
 	    	(strlen($this->description) > 90 ? 
 	    		substr($this->description, 0, 89).'...' : $this->description)
 			: "No description.";
+    }
+    
+    public function isFavourited() {
+	    if(!Auth::check()) {
+		    return false;
+	    }
+	    return Favourite::where('user_id', Auth::user()->id)
+        			  ->where('snippet_id', $this->id)->count() > 0 ? true : false;
     }
     
     public function formatSize($bytes, $precision = 2) { 

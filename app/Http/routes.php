@@ -11,6 +11,8 @@
 |
 */
 
+Route::post('snippet/favourite', array('uses' =>'FavouriteController@postFavourite'));
+
 Route::controllers([
     'auth' => 'Auth\AuthController',
     'password' => 'Auth\PasswordController',

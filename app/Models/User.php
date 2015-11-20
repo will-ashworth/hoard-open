@@ -37,12 +37,16 @@ class User extends Model implements AuthenticatableContract,
      */
     protected $hidden = ['password', 'remember_token'];
     
-    public function avatar() {
-	    return $this->avatar_url ?: "http://www.gravatar.com/avatar/default?d=mm&f=y";
+    public function favourites() {
+        return $this->hasMany('GetHoard\Models\Favourite');
     }
     
     public function snippets() {
         return $this->hasMany('GetHoard\Models\Snippet')->orderBy('updated_at', 'DESC');
+    }
+    
+    public function avatar() {
+	    return $this->avatar_url ?: "http://www.gravatar.com/avatar/default?d=mm&f=y";
     }
     
     public function firstName() {
