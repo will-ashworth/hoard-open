@@ -35,7 +35,8 @@ class SnippetController extends Controller
         return Validator::make($data, [
             'name' => 'required|alpha_dash|max:25',
             'extension' => 'required|alpha_num|max:5',
-            'description' => 'required|string|max:255',
+            'description' => 'string|max:255',
+            'file' => 'max:1024'//|mimes:x-php,html,plain,', //LIMIT SIZE TO 1024KB (1MB) also: mimes:
 			//'code' => 'required|alpha_num|size:8|unique:snippets',
         ]);
     }
@@ -92,8 +93,8 @@ class SnippetController extends Controller
 	    $data['file'] = $file;
 	    $data['description'] = $request->get('description');
 		$data['extension'] = $file->getClientOriginalExtension();
-	    $data['name'] = preg_replace('/\\.[^.\\s]{3,4}$/', '', $file->getClientOriginalName());
-		
+	    $data['name'] = preg_replace('/\\.[^.\\s]{2,4}$/', '', $file->getClientOriginalName());
+	    
 	    $validator = $this->validator($data);
 		if($validator->fails()) {
             return redirect()->back()
