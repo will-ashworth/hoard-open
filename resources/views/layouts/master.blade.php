@@ -96,7 +96,7 @@
  
     <script src="{!! asset('js/vendor/jquery.js') !!}"></script>
     <script src="{!! asset('js/foundation.min.js') !!}"></script> 
-    <script src="{!! asset('js/prism.js?v=2') !!}"></script> 
+    <script src="{!! asset('js/prism.js?v=3') !!}"></script> 
     <script>
       $(document).foundation();
     </script> 

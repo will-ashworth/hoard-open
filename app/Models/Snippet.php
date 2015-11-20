@@ -83,4 +83,30 @@ class Snippet extends Model
 	
 	    return round($bytes, $precision) . '' . $units[$pow]; 
 	}
+	
+	public function getLangFromExtension() {
+		$extensions = [
+			'js' => 'javascript',
+			'html' => 'markup',
+			'html5' => 'markup',
+			'htm' => 'markup',
+			'xhtml' => 'markup',
+			'jhtml' => 'markup',
+			'php' => 'php',
+			'php5' => 'php',
+			'php4' => 'php',
+			'php3' => 'php',
+			'phtml' => 'php',
+			'jhtml' => 'markup',
+			'svg' => 'markup',
+			'xml' => 'markup',
+			'rss' => 'markup',
+			'css' => 'css',
+			'py' => 'python',
+			'rb' => 'ruby'
+		];
+		
+		return (array_key_exists($this->extension, $extensions)) ? 
+			$extensions[$this->extension] : 'unknown';
+	}
 }
