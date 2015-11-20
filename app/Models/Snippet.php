@@ -23,7 +23,7 @@ class Snippet extends Model
      *
      * @var array
      */
-    protected $fillable = ['name', 'extension', 'code'];
+    protected $fillable = ['name', 'extension', 'code', 'description'];
 
     /**
      * The attributes excluded from the model's JSON form.
@@ -66,6 +66,10 @@ class Snippet extends Model
 	    return $this->formatSize(Storage::size($this->code));
     }
     
+    public function descShort() {
+	    return $this->description ? substr($this->description, 0, 89).'...' : "No description.";
+    }
+    
     public function formatSize($bytes, $precision = 2) { 
 	    $units = array('B', 'KB', 'MB', 'GB', 'TB'); 
 	
@@ -78,5 +82,5 @@ class Snippet extends Model
 	     $bytes /= (1 << (10 * $pow)); 
 	
 	    return round($bytes, $precision) . '' . $units[$pow]; 
-	} 
+	}
 }

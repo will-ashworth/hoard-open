@@ -9,18 +9,18 @@
                     "fa fa-sort"></i></span>{{ count($snippets) }} snippets
                 </div>
                 
-                @foreach($snippets as $snippet)
-                <div class="snippet-preview">
+                @foreach($snippets as $key => $snippet)
+                <div class="snippet-preview @if($key == 0) active @endif">
                     <div class="snippet-title">
                         <img class="avatar" src=
                         "{!! $snippet->author->avatar() !!}">
                         {{ $snippet->name }}.{{ $snippet->extension }}
                     </div>
                     <div class="snippet-date">
-                        updated {{ $snippet->getDate() }} by {{ $snippet->author->name }}
+                        updated {{ $snippet->getDate() }} by {{ $snippet->author->firstName() }}
                     </div>
                     <div class="snippet-desc">
-                        {{ substr($snippet->description, 0, 90) }}...
+                        {{ $snippet->descShort() }}
                     </div>
                     <div class="snippet-tags">
                         <span class="tag" style=
@@ -30,7 +30,7 @@
                     </div>
                 </div>
                 @endforeach
-                <div class="snippet-preview active">
+                <div class="snippet-preview">
                     <div class="snippet-title">
                         <img class="avatar" src=
                         "https://pbs.twimg.com/profile_images/601886235531939840/kIPyMEdW.png">
@@ -66,7 +66,7 @@
   </div>
 	    <div class="small-12 large-8 columns">
 
-<pre class="line-numbers" data-start="0"><code class="language-css">{{ $snippets[0]->getContents() }}</code></pre>
+<pre class="line-numbers" data-start="0"><code class="language-{{ $snippets[0]->extension }}">{{ $snippets[0]->getContents() }}</code></pre>
 	  
 	  
 	</div>

@@ -78,7 +78,7 @@
                 <div id="user-bar-left">
 	                @if(Auth::check())
                     <img class="avatar" src="{!! auth::user()->avatar() !!}">
-                    Welcome back, <a href="#">{{ Auth::user()->name }}</a>!
+                    Welcome back, <a href="#">{{ Auth::user()->firstName() }}</a>!
                     @else
                     <img class="avatar" src=
                     "https://pbs.twimg.com/profile_images/601886235531939840/kIPyMEdW.png">

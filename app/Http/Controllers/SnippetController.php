@@ -35,6 +35,7 @@ class SnippetController extends Controller
         return Validator::make($data, [
             'name' => 'required|alpha_dash|max:25',
             'extension' => 'required|alpha_num|max:5',
+            'description' => 'required|string|max:255',
 			//'code' => 'required|alpha_num|size:8|unique:snippets',
         ]);
     }
@@ -49,12 +50,13 @@ class SnippetController extends Controller
     {
         $snippet = Snippet::create([
             'name' => $data['name'],
-            'extension' => $data['extension'],
+            'extension' => strtolower($data['extension']),
+            'description' => $data['description'],
         ]);
         
         $code = $snippet->generateCode();
         $snippet->updateContents(File::get($data['file']));
-        $snippet->user()->associate(Auth::user());
+        $snippet->author()->associate(Auth::user());
         $snippet->save();
         
         return $snippet;
@@ -69,13 +71,21 @@ class SnippetController extends Controller
     }
     
     public function postUpload(Request $request) {
+	    
+	    if (!$request->file('file')->isValid()) {
+            return redirect()->back()
+                        ->withErrors(['File is not valid.'])
+                        ->withInput();
+		}
+		
 	    $file = $request->file('file');
 	    $data['file'] = $file;
+	    $data['description'] = $request->get('description');
 		$data['extension'] = $file->getClientOriginalExtension();
 	    $data['name'] = preg_replace('/\\.[^.\\s]{3,4}$/', '', $file->getClientOriginalName());
-	    
+		
 	    $validator = $this->validator($data);
-	    if ($validator->fails() || !$request->file('file')->isValid()) {
+		if($validator->fails()) {
             return redirect()->back()
                         ->withErrors($validator)
                         ->withInput();
@@ -83,6 +93,6 @@ class SnippetController extends Controller
         
         $this->create($data);
         
-        return redirect()->route('dashboard');
+        return redirect()->action('SnippetController@getView');
     }
 }

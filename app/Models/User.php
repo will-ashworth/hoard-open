@@ -42,6 +42,10 @@ class User extends Model implements AuthenticatableContract,
     }
     
     public function snippets() {
-        return $this->hasMany('GetHoard\Models\Snippet');
+        return $this->hasMany('GetHoard\Models\Snippet')->orderBy('updated_at', 'DESC');
+    }
+    
+    public function firstName() {
+	    return explode(" ", $this->name)[0];
     }
 }

@@ -18,6 +18,11 @@
 		@endif
 		
 		<div>
+		    {!! Form::label('Description') !!}
+			{!! Form::textarea('description', old('description')) !!}
+		</div>
+		
+		<div>
 		    {!! Form::label('Snippet File') !!}
 			{!! Form::file('file') !!}
 		</div>
