@@ -18,6 +18,7 @@
     <link href=
     "https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"
     rel="stylesheet">
+    
     <script src="{!! asset('js/vendor/modernizr.js') !!}">
     </script>
     <link href="{!! asset('css/jquery.jscrollpane.css') !!}" media="all" rel="stylesheet" type=
@@ -92,14 +93,16 @@
         <!-- /Page Content -->
 
     </div>
-
-    <script src="{!! asset('js/vendor/jquery.js') !!}"></script> 
+ 
+    <script src="{!! asset('js/vendor/jquery.js') !!}"></script>
     <script src="{!! asset('js/foundation.min.js') !!}"></script> 
     <script src="{!! asset('js/prism.js') !!}"></script> 
     <script>
       $(document).foundation();
     </script> 
     <script src="{!! asset('js/toggle-class.js') !!}"></script> 
+    <script src="{!! asset('js/app.js') !!}"></script>
+    <script type="text/javascript">@yield('scripts')</script>
     
     
     
