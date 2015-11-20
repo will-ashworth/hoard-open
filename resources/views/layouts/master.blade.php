@@ -86,7 +86,7 @@
                     @else
                     <img class="avatar" src=
                     "https://pbs.twimg.com/profile_images/601886235531939840/kIPyMEdW.png">
-                    Welcome back, Guest. <a href="{!! action('Auth\AuthController@getLogin') !!}">Log in</a>!
+                    Welcome back, Guest. <a href="{!! action('Auth\AuthController@getLogin') !!}">Log in</a> or <a href="{!! action('Auth\AuthController@getRegister') !!}">Register</a>!
                     @endif
                 </div>
             </div>
