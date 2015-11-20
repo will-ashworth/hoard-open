@@ -8,4 +8,9 @@ $(document).ready(function() {
 		$('div[snippet]').removeClass('visible').addClass('hidden');
 		$('div[snippet=' + id + ']').removeClass('hidden').addClass('visible');	
 	});
+	
+	$('#search').click(function(e) {
+        e.preventDefault();
+		$('#searchForm').submit();
+	});
 });

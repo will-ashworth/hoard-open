@@ -70,6 +70,16 @@ class SnippetController extends Controller
 	    return view('snippets.view')->withSnippets(Auth::user()->snippets);
     }
     
+    public function postSearch(Request $request) {
+	    $search = $request->has('search') ? $request->get('search') : '';
+	    return view('snippets.view')->withSnippets(Auth::user()->snippets()
+	    		->where('name', 'LIKE', '%'.$search.'%')
+	    		->orWhere('extension', 'LIKE', '%'.$search.'%')
+	    		->orWhere('description', 'LIKE', '%'.$search.'%')
+	    		->get())
+	    		->withSearch($search);
+    }
+    
     public function postUpload(Request $request) {
 	    
 	    if (!$request->file('file')->isValid()) {

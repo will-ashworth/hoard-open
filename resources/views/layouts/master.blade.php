@@ -42,7 +42,7 @@
                     <a href="{!! route('home') !!}"><img src="{!! asset('img/logo.png') !!}"></a>
                 </li>
                 <li class="sidebar-addnew">
-                    <a class="button addnew" href="#"><i class=
+                    <a class="button addnew" href="{!! action('SnippetController@getUpload') !!}"><i class=
                     "fa fa-code"></i> Create Snippet</a>
                 </li>
                 <li class="sidebar-divider">Menu</li>
@@ -74,7 +74,10 @@
         <div id="page-content-wrapper">
             <div id="user-bar">
                 <div id="user-bar-right">
-                   <input type="text" id="search-bar" placeholder="Search snippets" /><a href="#submit"><i class="fa fa-search"></i></a>
+	               <form action="{!! action('SnippetController@postSearch') !!}" method='POST' id="searchForm">
+		           {!! csrf_field() !!}
+                   <input type="text" id="search-bar" name="search" placeholder="Search snippets" /><a id="search"><i class="fa fa-search"></i></a>
+	               </form>
                 </div>
                 <div id="user-bar-left">
 	                @if(Auth::check())
@@ -101,7 +104,7 @@
       $(document).foundation();
     </script> 
     <script src="{!! asset('js/toggle-class.js') !!}"></script> 
-    <script src="{!! asset('js/app.js?v=1') !!}"></script>
+    <script src="{!! asset('js/app.js?v=2') !!}"></script>
     <script type="text/javascript">@yield('scripts')</script>
     
     

@@ -6,7 +6,7 @@
             <div id="picker-container">
                 <div class="picker-label">
                     <span class="sortby">Most recent <i class=
-                    "fa fa-sort"></i></span>{{ count($snippets) }} snippets
+                    "fa fa-sort"></i></span>{{ count($snippets) }} snippets @if(isset($search)) matching '@if(strlen($search) > 40){{ substr($search, 0, 39).'...' }}@else{{ $search }}@endif' @endif
                 </div>
                 
                 @foreach($snippets as $key => $snippet)
