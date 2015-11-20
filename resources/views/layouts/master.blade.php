@@ -9,7 +9,7 @@
 <head>
     <meta charset="utf-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <title>@yield('title', 'hoard')</title>
+    <title>@yield('title', 'Hoard - Code Snippets')</title>
     <link href="{!! asset('css/foundation.css') !!}" rel="stylesheet">
     <link href="{!! asset('css/hoard.css?v='.time()) !!}" rel="stylesheet">
     <link href=
@@ -18,7 +18,7 @@
     <link href=
     "https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css"
     rel="stylesheet">
-    
+    <link rel="shortcut icon" href="{!! asset('favicon.png') !!}">
     <script src="{!! asset('js/vendor/modernizr.js') !!}">
     </script>
     <link href="{!! asset('css/jquery.jscrollpane.css') !!}" media="all" rel="stylesheet" type=
@@ -52,11 +52,14 @@
                 <li class="sidebar-link">
                     <a href="#"><i class="fa fa-cogs"></i> Preferences</a>
                 </li>
+                
+                @if(Auth::check())
                 <li class="sidebar-divider">Tags</li>
                 <li class="sidebar-tag">
-                    <a href="#"><i class="fa fa-heart" style=
+                    <a href="{!! action('SnippetController@getFavourites') !!}" @if(Route::getCurrentRequest()->path() == "snippets/favourites") class="active" @endif>
+	                <i class="fa fa-heart" style=
                     "color: #b92c24;"></i> Favourites <span class=
-                    "sidebar-tag-count">6</span></a>
+                    "sidebar-tag-count">{{ Auth::user()->favourites()->count() }}</span></a>
                 </li>
                 <li class="sidebar-tag">
                     <a href="#"><i class="fa fa-circle" style=
@@ -67,6 +70,7 @@
                     <a href="#"><i class="fa fa-circle"></i> Uncategorised
                     <span class="sidebar-tag-count">33</span></a>
                 </li>
+                @endif
             </ul>
         </div>
         <!-- /Sidebar -->
@@ -105,9 +109,8 @@
     </script> 
     <script src="{!! asset('js/toggle-class.js') !!}"></script> 
     <script src="{!! asset('js/app.js?v='.time()) !!}"></script>
-    <script type="text/javascript">@yield('scripts')</script>
     
-    
+    @yield('scripts')
     
 </body>
 </html>

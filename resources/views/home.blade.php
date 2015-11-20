@@ -1,7 +1,5 @@
 @extends('layouts.master')
 
-@section('title', 'hoard')
-
 @section('content')
             <div id="picker-container">
                 <div class="picker-label">

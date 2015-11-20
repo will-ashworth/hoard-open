@@ -11,12 +11,13 @@
 |
 */
 
-Route::post('snippet/favourite', array('uses' =>'FavouriteController@postFavourite'));
+Route::post('snippets/favourite', array('uses' =>'FavouriteController@postFavourite'));
+Route::get('/snippets', array('as' => 'snippets.view', 'uses' =>'SnippetController@getView'));
 
 Route::controllers([
     'auth' => 'Auth\AuthController',
     'password' => 'Auth\PasswordController',
-    'snippet' => 'SnippetController',
+    'snippets' => 'SnippetController',
 ]);
 
 Route::get('/', array('as' => 'home', 'uses' =>'HomeController@index'));

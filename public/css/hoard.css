@@ -203,7 +203,7 @@ filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#2f8cca', end
     padding-right: 10px;
 }
 
-.sidebar-nav li a:hover {
+.sidebar-nav li a:hover, .sidebar-nav li a.active {
     text-decoration: none;
     color: #fff;
     background: rgba(255,255,255,0.2);
@@ -626,7 +626,7 @@ z-index: 1000;
 }
 
 .hidden {
-	display:none;
+	display:none !important;
 }
 
 .tag.favourite {

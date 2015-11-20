@@ -71,6 +71,16 @@ class SnippetController extends Controller
 	    return view('snippets.view')->withSnippets(Auth::user()->snippets);
     }
     
+    public function getFavourites() {
+	    $snippets = Auth::user()->snippets;
+	    foreach($snippets as $key => $snippet) {
+		    if(!$snippet->isFavourited()) {
+			    $snippets->forget($key);
+		    }
+	    }
+	    return view('snippets.view')->withSnippets($snippets);
+    }
+    
     public function postSearch(Request $request) {
 	    $search = $request->has('search') ? $request->get('search') : '';
 	    return view('snippets.view')->withSnippets(Auth::user()->snippets()

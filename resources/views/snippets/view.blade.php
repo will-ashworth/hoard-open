@@ -6,7 +6,7 @@
             <div id="picker-container">
                 <div class="picker-label">
                     <span class="sortby">Most recent <i class=
-                    "fa fa-sort"></i></span>{{ count($snippets) }} snippets @if(isset($search)) matching '@if(strlen($search) > 40){{ substr($search, 0, 39).'...' }}@else{{ $search }}@endif' @endif
+                    "fa fa-sort"></i></span>{{ count($snippets) }} @if(Route::getCurrentRequest()->path() == 'snippets/favourites') favourites @else snippets @endif @if(isset($search)) matching '@if(strlen($search) > 40){{ substr($search, 0, 39).'...' }}@else{{ $search }}@endif' @endif
                 </div>
                 
                 @foreach($snippets as $key => $snippet)
@@ -66,10 +66,15 @@
 			                </li>
 			                <li class="snippet-sidebar-divider">Actions</li>
 			                <li class="snippet-sidebar-link">
-			                    <a href="#"><i class="fa fa-heart" style=
-			                    "color: #b92c24;"></i> Remove from Favourites</a>
-			                    <a href="#"><i class="fa fa-heart" style=
-			                    "color: #bbb;"></i> Add to Favourites</a>
+			                
+			                    <a id="{{ $snippet->id}}" class="favourite remove @if(!$snippet->isFavourited()) hidden @endif">
+				                    <i class="fa fa-heart" style="color: #b92c24;"></i> 
+				                    Remove from Favourites
+				                </a>
+			                    <a id="{{ $snippet->id}}" class="favourite add @if($snippet->isFavourited()) hidden @endif">
+				                    <i class="fa fa-heart" style="color: #bbb;"></i> 
+				                    Add to Favourites
+				                </a>
 			                </li>
         				</ul>
 					</div>
@@ -79,17 +84,37 @@
 @endsection
 
 @section('scripts')
+<script type="text/javascript">
 $(document).ready(function() {
-	$('.tag.favourite').click(function(e) {
+	
+	var fun = function(e) {
+		e.preventDefault();
 		
 		var id = $(this).attr('id');
 		$.each($('.tag.favourite'), function() {
-			if($(this).attr('id') === id)
+			if($(this).attr('id') === id) {
 				$(this).toggleClass("active");
+			}
+		});
+		$.each($('.favourite.add'), function() {
+			if($(this).attr('id') === id) {
+				$(this).toggleClass("hidden");
+			}
+		});
+		$.each($('.favourite.remove'), function() {
+			if($(this).attr('id') === id) {
+				$(this).toggleClass("hidden");
+			}
 		});
 		$.post("{!! action('FavouriteController@postFavourite') !!}", { 'snippet_id': id, '_token': '{!! csrf_token() !!}' }).done(function( ret ) {
 		
 		});
-	});
+	};
+	
+	
+	$('.tag.favourite').click(fun);
+	$('.add.favourite').click(fun);
+	$('.remove.favourite').click(fun);
 });
+</script>
 @endsection
