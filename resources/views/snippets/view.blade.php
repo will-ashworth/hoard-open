@@ -23,8 +23,7 @@
                         {{ $snippet->descShort() }}
                     </div>
                     <div class="snippet-tags">
-                        <span class="tag" style=
-                        "background: #b92d25;"><i class="fa fa-heart"></i></span>
+                        <span class="tag favourite"><i class="fa fa-heart"></i></span>
                         <span class="tag" style="background: #3498db;">Sample
                         Tag</span>
                     </div>
@@ -38,7 +37,7 @@
 					<div class="small-12 large-12 columns">
 						<h1 class="snippet-title">{{ $snippet->name }}.{{ $snippet->extension }}
 							<div class="snippet-tags">
-								<span class="tag" style="background: #b92d25;"><i class="fa fa-heart"></i></span>
+								<span class="tag favourite"><i class="fa fa-heart"></i></span>
 								<span class="tag" style="background: #3498db;">Sample Tag</span>
                 			</div>
                 		</h1>
@@ -69,6 +68,8 @@
 			                <li class="snippet-sidebar-link">
 			                    <a href="#"><i class="fa fa-heart" style=
 			                    "color: #b92c24;"></i> Remove from Favourites</a>
+			                    <a href="#"><i class="fa fa-heart" style=
+			                    "color: #bbb;"></i> Add to Favourites</a>
 			                </li>
         				</ul>
 					</div>

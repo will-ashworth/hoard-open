@@ -629,6 +629,17 @@ z-index: 1000;
 	display:none;
 }
 
+.tag.favourite {
+	color: #aaa;
+	background:#ccc;
+	cursor:pointer;
+}
+
+.tag.favourite.active {
+	color:#ffffff;
+	background: #b92d25;
+}
+
  
  
  

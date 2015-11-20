@@ -11,7 +11,7 @@
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>@yield('title', 'hoard')</title>
     <link href="{!! asset('css/foundation.css') !!}" rel="stylesheet">
-    <link href="{!! asset('css/hoard.css') !!}" rel="stylesheet">
+    <link href="{!! asset('css/hoard.css?v='.time()) !!}" rel="stylesheet">
     <link href=
     'https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800'
     rel='stylesheet' type='text/css'>
@@ -99,12 +99,12 @@
  
     <script src="{!! asset('js/vendor/jquery.js') !!}"></script>
     <script src="{!! asset('js/foundation.min.js') !!}"></script> 
-    <script src="{!! asset('js/prism.js?v=3') !!}"></script> 
+    <script src="{!! asset('js/prism.js?v='.time()) !!}"></script> 
     <script>
       $(document).foundation();
     </script> 
     <script src="{!! asset('js/toggle-class.js') !!}"></script> 
-    <script src="{!! asset('js/app.js?v=2') !!}"></script>
+    <script src="{!! asset('js/app.js?v='.time()) !!}"></script>
     <script type="text/javascript">@yield('scripts')</script>
     
     
