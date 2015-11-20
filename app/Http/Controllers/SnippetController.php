@@ -64,6 +64,10 @@ class SnippetController extends Controller
 	    return view('snippets.upload');
     }
     
+    public function getView() {
+	    return view('snippets.view')->withSnippets(Auth::user()->snippets);
+    }
+    
     public function postUpload(Request $request) {
 	    $file = $request->file('file');
 	    $data['file'] = $file;

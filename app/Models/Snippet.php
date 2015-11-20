@@ -32,8 +32,8 @@ class Snippet extends Model
      */
     protected $hidden = [];
     
-    public function user() {
-        return $this->belongsTo('GetHoard\Models\User');
+    public function author() {
+        return $this->belongsTo('GetHoard\Models\User', 'user_id');
     }
     
     public function generateCode() {
@@ -57,4 +57,26 @@ class Snippet extends Model
     public function updateContents($contents) {
         Storage::disk('local')->put($this->code, $contents);
     }
+    
+    public function getDate() {
+	    return date("jS F Y", strtotime($this->updated_at));
+    }
+    
+    public function getSize() {
+	    return $this->formatSize(Storage::size($this->code));
+    }
+    
+    public function formatSize($bytes, $precision = 2) { 
+	    $units = array('B', 'KB', 'MB', 'GB', 'TB'); 
+	
+	    $bytes = max($bytes, 0); 
+	    $pow = floor(($bytes ? log($bytes) : 0) / log(1024)); 
+	    $pow = min($pow, count($units) - 1); 
+	
+	    // Uncomment one of the following alternatives
+	    // $bytes /= pow(1024, $pow);
+	     $bytes /= (1 << (10 * $pow)); 
+	
+	    return round($bytes, $precision) . '' . $units[$pow]; 
+	} 
 }

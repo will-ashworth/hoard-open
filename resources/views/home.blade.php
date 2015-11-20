@@ -128,7 +128,7 @@
                         Tag</span>
                     </div>
                 </div>
-                <div class="snippet-end"><img src="img/acornend.png"></div>
+                <div class="snippet-end"><img src="{{ asset('img/acornend.png') }}"></div>
             </div>
                         <div id="inline-container">
 				  <div id="inline-content">
