@@ -18,4 +18,4 @@ Route::controllers([
 ]);
 
 Route::get('/', array('as' => 'home', 'uses' =>'HomeController@index'));
-Route::get('/dashboard', array('as' => 'dashboard', 'uses' =>'HomeController@index'));
+Route::get('/dashboard', array('as' => 'dashboard', 'uses' =>'SnippetController@getView'));

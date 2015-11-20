@@ -47,7 +47,7 @@
 						</div>
 						<div class="small-12 large-8 columns">
 
-							<pre class="line-numbers" data-start="0"><code class="language-{{ $snippets[0]->extension }}">{{ $snippet->getContents() }}</code></pre>
+							<pre class="line-numbers language-{{ $snippet->extension }}" data-start="0"><code class="language-{{ $snippet->extension }}">{{ $snippet->getContents() }}</code></pre>
   
   
 					</div>

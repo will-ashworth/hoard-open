@@ -47,7 +47,7 @@
                 </li>
                 <li class="sidebar-divider">Menu</li>
                 <li class="sidebar-link">
-                    <a href="#"><i class="fa fa-tachometer"></i> Dashboard</a>
+                    <a href="{!! route('dashboard') !!}"><i class="fa fa-tachometer"></i> Dashboard</a>
                 </li>
                 <li class="sidebar-link">
                     <a href="#"><i class="fa fa-cogs"></i> Preferences</a>
@@ -96,12 +96,12 @@
  
     <script src="{!! asset('js/vendor/jquery.js') !!}"></script>
     <script src="{!! asset('js/foundation.min.js') !!}"></script> 
-    <script src="{!! asset('js/prism.js') !!}"></script> 
+    <script src="{!! asset('js/prism.js?v=2') !!}"></script> 
     <script>
       $(document).foundation();
     </script> 
     <script src="{!! asset('js/toggle-class.js') !!}"></script> 
-    <script src="{!! asset('js/app.js') !!}"></script>
+    <script src="{!! asset('js/app.js?v=1') !!}"></script>
     <script type="text/javascript">@yield('scripts')</script>
     
     

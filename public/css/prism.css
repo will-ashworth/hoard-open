@@ -17,7 +17,7 @@ pre[class*="language-"] {
 	word-break: normal;
 	word-wrap: normal;
 	line-height: 1.5;
-	font-size: 11px;
+
 	-moz-tab-size: 4;
 	-o-tab-size: 4;
 	tab-size: 4;
@@ -30,20 +30,20 @@ pre[class*="language-"] {
 
 /* Code blocks */
 pre[class*="language-"] {
-	padding: 30px 0.5em;
+	padding: 1em;
+	margin: .5em 0;
 	overflow: auto;
-	border-radius: 5px;
-	margin-bottom: 20px;
+	border-radius: 0.3em;
 }
 
 :not(pre) > code[class*="language-"],
 pre[class*="language-"] {
-	background: #1c2027;
+	background: #272822;
 }
 
 /* Inline code */
 :not(pre) > code[class*="language-"] {
-	padding: .1em ;
+	padding: .1em;
 	border-radius: .3em;
 	white-space: normal;
 }
@@ -68,7 +68,7 @@ pre[class*="language-"] {
 .token.constant,
 .token.symbol,
 .token.deleted {
-	color: #5e6674;
+	color: #f92672;
 }
 
 .token.boolean,
@@ -82,7 +82,7 @@ pre[class*="language-"] {
 .token.char,
 .token.builtin,
 .token.inserted {
-	color: #ffc814;
+	color: #a6e22e;
 }
 
 .token.operator,
@@ -140,7 +140,7 @@ pre[data-line] {
 	background: linear-gradient(left, hsla(24, 20%, 50%,.1) 70%, hsla(24, 20%, 50%,0));
 	
 	pointer-events: none;
-	z-index: 10000;
+	
 	line-height: inherit;
 	white-space: pre;
 }
@@ -296,4 +296,3 @@ pre.line-numbers > code {
 	background-color: inherit;
 	background-clip: padding-box;
 }
-
