@@ -67,7 +67,10 @@ class Snippet extends Model
     }
     
     public function descShort() {
-	    return $this->description ? substr($this->description, 0, 89).'...' : "No description.";
+	    return $this->description ? 
+	    	(strlen($this->description) > 90 ? 
+	    		substr($this->description, 0, 89).'...' : $this->description)
+			: "No description.";
     }
     
     public function formatSize($bytes, $precision = 2) { 
