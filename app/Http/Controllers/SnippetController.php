@@ -49,11 +49,11 @@ class SnippetController extends Controller
      */
     protected function create(array $data)
     {
-        $snippet = Snippet::create([
-            'name' => $data['name'],
-            'extension' => strtolower($data['extension']),
-            'description' => $data['description'],
-        ]);
+        $snippet = new Snippet;
+        
+        $snippet->name = $data['name'];
+        $snippet->extension = strtolower($data['extension']);
+        $snippet->description = $data['description'];
         
         $code = $snippet->generateCode();
         $snippet->updateContents(File::get($data['file']));
